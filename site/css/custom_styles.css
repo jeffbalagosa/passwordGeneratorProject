@@ -1,3 +1,7 @@
-html {
+* {
   background-color: #ebeced;
+}
+.card {
+  width: 50%;
+  margin: auto;
 }

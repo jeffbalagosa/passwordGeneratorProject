@@ -1,7 +1,10 @@
-* {
+body {
   background-color: #ebeced;
 }
 .card {
   width: 50%;
   margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
 }

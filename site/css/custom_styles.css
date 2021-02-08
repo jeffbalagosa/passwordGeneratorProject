@@ -5,6 +5,9 @@ footer {
   margin-top: 90vh;
   height: 10vh;
 }
+footer p {
+  text-align: center;
+}
 .card {
   width: 50%;
   margin: auto;

@@ -11,7 +11,7 @@ const words = [
   'snack',
   'amuse',
 ];
-let word = listPicker(words);
+let word1 = listPicker(words);
 let word2 = listPicker(words);
 
 // pick random element from an array
@@ -19,5 +19,5 @@ function listPicker(array) {
   const listItem = Math.floor(Math.random() * Math.floor(array.length));
   return array[listItem];
 }
-console.log(word);
+console.log(word1);
 console.log(word2.toUpperCase());

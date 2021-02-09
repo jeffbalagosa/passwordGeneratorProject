@@ -11,8 +11,15 @@ const words = [
   'snack',
   'amuse',
 ];
-let word1 = listPicker(words);
-let word2 = listPicker(words);
+const randomNumberObject = {
+  a: getRandomNumber(0, 9),
+  b: getRandomNumber(0, 9),
+  c: getRandomNumber(0, 9),
+  d: getRandomNumber(0, 9),
+};
+const word1 = listPicker(words);
+const word2 = listPicker(words);
+const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}${randomNumberObject.c}${randomNumberObject.d}`;
 
 // pick random element from an array
 function listPicker(array) {
@@ -20,9 +27,11 @@ function listPicker(array) {
   return array[listItem];
 }
 
+// generate raneom number by passing in a high and a low number
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 console.log(word1);
 console.log(word2.toUpperCase());
+console.log(randomNumber);

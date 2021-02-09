@@ -1,16 +1,17 @@
 body {
   background-color: #ebeced;
 }
-footer {
-  margin-top: 90vh;
-  height: 10vh;
-}
 footer p {
   text-align: center;
+  font-style: italic;
+  font-size: 0.75rem;
 }
 .card {
   width: 50%;
   margin: auto;
   margin-top: 3rem;
   max-width: 600px;
+}
+.card-text em {
+  background-color: yellow;
 }

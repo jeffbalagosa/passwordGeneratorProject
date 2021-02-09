@@ -14,12 +14,10 @@ const words = [
 const randomNumberObject = {
   a: getRandomNumber(0, 9),
   b: getRandomNumber(0, 9),
-  c: getRandomNumber(0, 9),
-  d: getRandomNumber(0, 9),
 };
 const word1 = listPicker(words);
 const word2 = listPicker(words);
-const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}${randomNumberObject.c}${randomNumberObject.d}`;
+const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}`;
 
 // pick random element from an array
 function listPicker(array) {

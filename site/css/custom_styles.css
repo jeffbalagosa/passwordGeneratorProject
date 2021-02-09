@@ -15,3 +15,6 @@ footer p {
 .card-text em {
   background-color: yellow;
 }
+.hide {
+  display: none;
+}

@@ -1,6 +1,9 @@
 body {
   background-color: #ebeced;
 }
+footer {
+  margin-top: 1rem;
+}
 footer p {
   text-align: center;
   font-style: italic;

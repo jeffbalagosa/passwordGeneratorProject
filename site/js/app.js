@@ -10,6 +10,16 @@ const words = [
   'plead',
   'snack',
   'amuse',
+  'self',
+  'hair',
+  'whip',
+  'copy',
+  'cane',
+  'rich',
+  'just',
+  'date',
+  'cafe',
+  'quit',
 ];
 const randomNumberObject = {
   a: getRandomNumber(0, 9),
@@ -29,6 +39,8 @@ function listPicker(array) {
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// validate word length
 
 console.log(word1);
 console.log(word2.toUpperCase());

@@ -36,12 +36,15 @@ function listPicker(array) {
   return array[listItem];
 }
 
-// generate raneom number by passing in a high and a low number
+// generate random number by passing in a high and a low number
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // validate word length
+if (condition) {
+} else {
+}
 
 console.log(word1);
 console.log(word2.toUpperCase());

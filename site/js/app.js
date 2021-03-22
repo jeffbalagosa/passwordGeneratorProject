@@ -33,17 +33,17 @@ const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}`;
 // pick random element from an array
 function listPicker(array) {
   const listItem = Math.floor(Math.random() * Math.floor(array.length));
-  return array[listItem];
+  //validate list item
+  if (listItem.length > 4) {
+    listItem = Math.floor(Math.random() * Math.floor(array.length));
+  } else {
+    return array[listItem];
+  }
 }
 
 // generate random number by passing in a high and a low number
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// validate word length
-if (condition) {
-} else {
 }
 
 console.log(word1);

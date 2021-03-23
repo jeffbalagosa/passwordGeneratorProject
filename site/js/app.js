@@ -22,13 +22,23 @@ const words = [
   'cafe',
   'quit',
 ];
-const randomNumberObject = {
-  a: getRandomNumber(0, 9),
-  b: getRandomNumber(0, 9),
+let randomNumberObject = {
+  a: getRandomDigit(0, 9),
+  b: getRandomDigit(0, 9),
 };
 let word1 = listPicker(words);
 let word2 = listPicker(words);
-const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}`;
+let number;
+
+//randomize number fore every list item
+function randomizeNumber() {
+  randomNumberObject = {
+    a: getRandomDigit(0, 9),
+    b: getRandomDigit(0, 9),
+  };
+  number = `${randomNumberObject.a}${randomNumberObject.b}`;
+  return number;
+}
 
 // pick random element from an array
 function listPicker(array) {
@@ -37,7 +47,7 @@ function listPicker(array) {
 }
 
 // generate random number by passing in a high and a low number
-function getRandomNumber(min, max) {
+function getRandomDigit(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -53,16 +63,41 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li>${validWord(word1)}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li>
+    <li>${validWord(word1)}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li>
+    <li>${validWord(word1)}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(
+      word2
+    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
+      word1
+    )}.${validWord(word2).toUpperCase()}.${randomizeNumber()}
       </ul>
     </div>`
   );
@@ -70,9 +105,12 @@ function buildSuggestionList() {
 
 console.log(validWord(word1));
 console.log(validWord(word2).toUpperCase());
-console.log(randomNumber);
+console.log(randomizeNumber());
+
+buildSuggestionList();
 
 //get passwords on button click
 $('.get-pass').on('click', function () {
   //place jquery function for dom manipulation here.
+  buildSuggestionList();
 });

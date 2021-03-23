@@ -18,3 +18,6 @@ footer p {
 .card-text em {
   background-color: yellow;
 }
+ul {
+  list-style-type: none;
+}

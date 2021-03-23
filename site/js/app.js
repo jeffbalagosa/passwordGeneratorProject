@@ -26,8 +26,7 @@ let randomNumberObject = {
   a: getRandomDigit(0, 9),
   b: getRandomDigit(0, 9),
 };
-let word1 = listPicker(words);
-let word2 = listPicker(words);
+let word;
 let number;
 
 //randomize number fore every list item
@@ -46,66 +45,40 @@ function listPicker(array) {
   return array[listItem];
 }
 
+//pick a valid random word from the array
+function randomizeWord() {
+  word = listPicker(words);
+  while (word.length > 4) {
+    word = listPicker(words);
+  }
+  return word;
+}
+
 // generate random number by passing in a high and a low number
 function getRandomDigit(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//validate word length
-function validWord(str) {
-  while (str.length > 4) {
-    str = listPicker(words);
-  }
-  return str;
-}
-
 function buildSuggestionList() {
   $('.pwList').html(
     `<div>
+      <hr />
       <ul>
-      <li>${validWord(word1)}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li>
-    <li>${validWord(word1)}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li>
-    <li>${validWord(word1)}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(
-      word2
-    ).toUpperCase()}.${randomizeNumber()}</li><li>${validWord(
-      word1
-    )}.${validWord(word2).toUpperCase()}.${randomizeNumber()}
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
       </ul>
+      <hr />
     </div>`
   );
 }
-
-console.log(validWord(word1));
-console.log(validWord(word2).toUpperCase());
-console.log(randomizeNumber());
 
 buildSuggestionList();
 

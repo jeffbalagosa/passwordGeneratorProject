@@ -1043,7 +1043,6 @@ function getRandomDigit(min, max) {
 function buildSuggestionList() {
   $('.pwList').html(
     `<div>
-      <hr />
       <ul>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
@@ -1056,7 +1055,6 @@ function buildSuggestionList() {
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
       </ul>
-      <hr />
     </div>`
   );
 }

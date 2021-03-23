@@ -19,5 +19,9 @@ footer p {
   background-color: yellow;
 }
 ul {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
   list-style-type: none;
+  background-color: lightgray;
 }

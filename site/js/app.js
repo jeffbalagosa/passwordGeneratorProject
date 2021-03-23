@@ -49,6 +49,30 @@ function validWord(str) {
   return str;
 }
 
+function buildSuggestionList() {
+  $('.pwList').html(
+    `<div>
+      <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      </ul>
+    </div>`
+  );
+}
+
 console.log(validWord(word1));
 console.log(validWord(word2).toUpperCase());
 console.log(randomNumber);
+
+//get passwords on button click
+$('.get-pass').on('click', function () {
+  //place jquery function for dom manipulation here.
+});

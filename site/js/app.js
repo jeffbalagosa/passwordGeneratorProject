@@ -27,7 +27,7 @@ const randomNumberObject = {
   b: getRandomNumber(0, 9),
 };
 let word1 = listPicker(words);
-const word2 = listPicker(words);
+let word2 = listPicker(words);
 const randomNumber = `${randomNumberObject.a}${randomNumberObject.b}`;
 
 // pick random element from an array
@@ -43,13 +43,12 @@ function getRandomNumber(min, max) {
 
 //validate word length
 function validWord(str) {
-  if (str.length > 4) {
+  while (str.length > 4) {
     str = listPicker(words);
-  } else {
-    return str;
   }
+  return str;
 }
 
 console.log(validWord(word1));
-console.log(word2.toUpperCase());
+console.log(validWord(word2).toUpperCase());
 console.log(randomNumber);

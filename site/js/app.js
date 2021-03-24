@@ -3045,15 +3045,15 @@ function buildSuggestionList() {
     `<div>
       <ul>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
       <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
+      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
       </ul>
     </div>`
   );

@@ -3028,6 +3028,7 @@ function listPicker(array) {
 //pick a valid random word from the array
 function randomizeWord() {
   word = listPicker(words);
+  //validate word to meet required length
   while (word.length !== 4) {
     word = listPicker(words);
   }

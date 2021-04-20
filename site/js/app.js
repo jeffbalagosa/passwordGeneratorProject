@@ -3009,7 +3009,7 @@ let randomNumberObject = {
 let word;
 let number;
 
-//randomize number fore every list item
+//randomize number for every list item
 function randomizeNumber() {
   randomNumberObject = {
     a: getRandomDigit(0, 9),

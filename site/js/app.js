@@ -3044,18 +3044,18 @@ function getRandomDigit(min, max) {
 function buildSuggestionList() {
   $('.pwList').html(
     `<div>
-      <ul>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</li>
-      <li>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</li>
-      </ul>
+      <dl>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      </dl>
     </div>`
   );
 }

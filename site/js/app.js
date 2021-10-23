@@ -3043,7 +3043,7 @@ function randomizeWord() {
 }
 
 const randomSymbol = () => {
-  let symbols = ['.', '!', '?', '%', '$'];
+  let symbols = ['.', '!', '?', '%', '$', '@', '^', ':', '-', '_'];
   let randNum = Math.floor(Math.random() * (symbols.length - 0)) + 0;
   return symbols[randNum];
 };

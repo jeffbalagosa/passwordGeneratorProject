@@ -3011,12 +3011,12 @@ let number;
 
 //randomize number for every list item
 function randomizeNumber() {
-  randomNumberObject = {
-    a: getRandomDigit(0, 9),
-    b: getRandomDigit(0, 9),
-  };
-  number = `${randomNumberObject.a}${randomNumberObject.b}`;
-  return number;
+  let numArr = [];
+  let digits = 4;
+  while (numArr.length < digits) {
+    numArr.push(getRandomDigit(0, 9));
+  }
+  return numArr.join('');
 }
 
 // pick random element from an array

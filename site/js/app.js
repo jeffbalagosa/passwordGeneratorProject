@@ -3023,6 +3023,13 @@ function listPicker(array) {
   return array[listItem];
 }
 
+const randomCaps = (word) => {
+  const num = getRandomDigit(0, 1);
+  if (num === 0) {
+    return word;
+  } else return word.toUpperCase();
+};
+
 //pick a valid random word from the array
 function randomizeWord() {
   let word;
@@ -3031,7 +3038,8 @@ function randomizeWord() {
   while (word.length < 4 || word.length > 8) {
     word = listPicker(words);
   }
-  return word;
+
+  return randomCaps(word);
 }
 
 const randomSymbol = () => {
@@ -3049,43 +3057,21 @@ const passPhraseBuilder = (wordCount, digitCount) => {
   return wordArr.join(`${randomSymbol()}`);
 };
 
-console.log(`passPhraseBuilder = ${passPhraseBuilder(3, 4)}`);
-
 //add generated html to index.html
 function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
-      4
-    )}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
-      4
-    )}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
+      <dt>${passPhraseBuilder(3, 4)}</dt>
       </dl>
     </div>`
   );

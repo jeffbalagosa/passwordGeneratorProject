@@ -3002,10 +3002,11 @@ const words = [
   'youth',
   'zone',
 ];
-let randomNumberObject = {
-  a: getRandomDigit(0, 9),
-  b: getRandomDigit(0, 9),
-};
+
+// let randomNumberObject = {
+//   a: getRandomDigit(0, 9),
+//   b: getRandomDigit(0, 9),
+// };
 let word;
 let number;
 

@@ -3009,9 +3009,8 @@ function getRandomDigit(min, max) {
 }
 
 //randomize number for every list item
-function randomizeNumber() {
+function randomizeNumber(digits) {
   let numArr = [];
-  let digits = 4;
   while (numArr.length < digits) {
     numArr.push(getRandomDigit(0, 9));
   }
@@ -3035,21 +3034,58 @@ function randomizeWord() {
   return word;
 }
 
+const randomSymbol = () => {
+  let symbols = ['.', '!', '?', '%', '$'];
+  let randNum = Math.floor(Math.random() * (symbols.length - 0)) + 0;
+  return symbols[randNum];
+};
+
+const passPhraseBuilder = (wordCount, digitCount) => {
+  const wordArr = [];
+  while (wordArr.length < wordCount) {
+    wordArr.push(randomizeWord());
+  }
+  wordArr.push(randomizeNumber(digitCount));
+  return wordArr.join(`${randomSymbol()}`);
+};
+
+console.log(`passPhraseBuilder = ${passPhraseBuilder(3, 4)}`);
+
 //add generated html to index.html
 function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber()}</dt>
-      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber()}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toLowerCase()}.${randomizeWord().toUpperCase()}.${randomizeNumber(
+      4
+    )}</dt>
+      <dt>${randomizeWord().toUpperCase()}.${randomizeWord().toLowerCase()}.${randomizeNumber(
+      4
+    )}</dt>
       </dl>
     </div>`
   );

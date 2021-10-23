@@ -29,7 +29,7 @@ const randomCaps = (word) => {
 };
 
 //pick a valid random word from the array
-function randomWordPicker() {
+function randomWordPicker(minWordLength, maxWordLength) {
   const words = [
     'a',
     'abandon',
@@ -3034,7 +3034,7 @@ function randomWordPicker() {
   ];
   let word = listPicker(words);
   //validate word to meet required length
-  while (word.length < 4 || word.length > 8) {
+  while (word.length < minWordLength || word.length > maxWordLength) {
     word = listPicker(words);
   }
 
@@ -3042,7 +3042,7 @@ function randomWordPicker() {
 }
 
 const randomSymbol = () => {
-  let symbols = ['.', '!', '?', '%', '$', '@', '^', ':', '-', '_'];
+  let symbols = ['.', '!', '?', '%', '$', '@', '^', ':', '-', '_', ';'];
   let randNum = Math.floor(Math.random() * (symbols.length - 0)) + 0;
   return symbols[randNum];
 };
@@ -3050,7 +3050,7 @@ const randomSymbol = () => {
 const passPhraseBuilder = (wordCount, digitCount) => {
   const wordArr = [];
   while (wordArr.length < wordCount) {
-    wordArr.push(randomWordPicker());
+    wordArr.push(randomWordPicker(4, 8));
   }
   wordArr.push(randomizeNumber(digitCount));
   return `<dt>${wordArr.join(`${randomSymbol()}`)}</dt>`;

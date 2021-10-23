@@ -3050,7 +3050,7 @@ const randomSymbol = () => {
 const passPhraseBuilder = (wordCount, digitCount) => {
   const wordArr = [];
   while (wordArr.length < wordCount) {
-    wordArr.push(randomWordPicker(4, 8));
+    wordArr.push(randomWordPicker(4, 6));
   }
   wordArr.push(randomizeNumber(digitCount));
   return `<dt>${wordArr.join(`${randomSymbol()}`)}</dt>`;
@@ -3069,7 +3069,7 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      ${listBuilder(3, 4, 10)}
+      ${listBuilder(2, 2, 10)}
       </dl>
     </div>`
   );

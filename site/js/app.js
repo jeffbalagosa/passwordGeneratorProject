@@ -3003,12 +3003,10 @@ const words = [
   'zone',
 ];
 
-// let randomNumberObject = {
-//   a: getRandomDigit(0, 9),
-//   b: getRandomDigit(0, 9),
-// };
-let word;
-let number;
+// generate random number by passing in a high and a low number
+function getRandomDigit(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 //randomize number for every list item
 function randomizeNumber() {
@@ -3028,17 +3026,13 @@ function listPicker(array) {
 
 //pick a valid random word from the array
 function randomizeWord() {
+  let word;
   word = listPicker(words);
   //validate word to meet required length
   while (word.length < 4 || word.length > 8) {
     word = listPicker(words);
   }
   return word;
-}
-
-// generate random number by passing in a high and a low number
-function getRandomDigit(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 //add generated html to index.html

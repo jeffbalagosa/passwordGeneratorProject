@@ -3054,7 +3054,15 @@ const passPhraseBuilder = (wordCount, digitCount) => {
     wordArr.push(randomizeWord());
   }
   wordArr.push(randomizeNumber(digitCount));
-  return wordArr.join(`${randomSymbol()}`);
+  return `<dt>${wordArr.join(`${randomSymbol()}`)}</dt>`;
+};
+
+const listBuilder = (wordCount, digitCount, listItemCount) => {
+  const list = [];
+  while (list.length < listItemCount) {
+    list.push(passPhraseBuilder(wordCount, digitCount));
+  }
+  return list.join('');
 };
 
 //add generated html to index.html
@@ -3062,16 +3070,7 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
-      <dt>${passPhraseBuilder(3, 4)}</dt>
+      ${listBuilder(3, 4, 10)}
       </dl>
     </div>`
   );

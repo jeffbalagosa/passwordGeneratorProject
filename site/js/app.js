@@ -3029,7 +3029,7 @@ function listPicker(array) {
 function randomizeWord() {
   word = listPicker(words);
   //validate word to meet required length
-  while (word.length < 4 || word.length > 6) {
+  while (word.length < 4 || word.length > 8) {
     word = listPicker(words);
   }
   return word;

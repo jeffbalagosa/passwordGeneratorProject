@@ -3049,11 +3049,14 @@ const randomSymbol = () => {
 
 const passPhraseBuilder = (wordCount, digitCount) => {
   const wordArr = [];
+  let password = '';
   while (wordArr.length < wordCount) {
     wordArr.push(randomWordPicker(4, 6));
+    //put something here for... if (wordArr.push(randomWordPicker(4, 6)) === all caps) {make the next word all lower case} and vice versa
   }
   wordArr.push(randomizeNumber(digitCount));
-  return `${wordArr.join(`${randomSymbol()}`)}`;
+  password = `${wordArr.join(`${randomSymbol()}`)}`;
+  return password;
 };
 
 const listBuilder = (wordCount, digitCount, listItemCount) => {

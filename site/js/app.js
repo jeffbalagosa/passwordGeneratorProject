@@ -3053,13 +3053,13 @@ const passPhraseBuilder = (wordCount, digitCount) => {
     wordArr.push(randomWordPicker(4, 6));
   }
   wordArr.push(randomizeNumber(digitCount));
-  return `<dt>${wordArr.join(`${randomSymbol()}`)}</dt>`;
+  return `${wordArr.join(`${randomSymbol()}`)}`;
 };
 
 const listBuilder = (wordCount, digitCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    list.push(passPhraseBuilder(wordCount, digitCount));
+    list.push(`<dt>${passPhraseBuilder(wordCount, digitCount)}</dt>`);
   }
   return list.join('');
 };

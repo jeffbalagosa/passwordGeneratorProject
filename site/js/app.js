@@ -21,13 +21,6 @@ function listPicker(array) {
   return array[listItem];
 }
 
-const randomCaps = (word) => {
-  const num = getRandomDigit(0, 1);
-  if (num === 0) {
-    return word;
-  } else return word.toUpperCase();
-};
-
 //pick a valid random word from the array
 function randomWordPicker(minWordLength, maxWordLength) {
   const words = [
@@ -3037,8 +3030,7 @@ function randomWordPicker(minWordLength, maxWordLength) {
   while (word.length < minWordLength || word.length > maxWordLength) {
     word = listPicker(words);
   }
-
-  return randomCaps(word);
+  return word;
 }
 
 const randomSymbol = () => {
@@ -3047,19 +3039,48 @@ const randomSymbol = () => {
   return symbols[randNum];
 };
 
-const passPhraseBuilder = (wordCount, digitCount) => {
+const passPhraseStartsLowerCase = (wordCount, digitCount) => {
   const wordArr = [];
-  while (wordArr.length < wordCount) {
-    wordArr.push(randomWordPicker(4, 8));
+  let password = '';
+  for (let i = 0; i < wordCount; i++) {
+    let randomWord = randomWordPicker(4, 6);
+    if (!i % 2 === 0) {
+      wordArr.push(randomWord.toUpperCase());
+    } else {
+      wordArr.push(randomWord);
+    }
   }
+
   wordArr.push(randomizeNumber(digitCount));
-  return `<dt>${wordArr.join(`${randomSymbol()}`)}</dt>`;
+  password = `${wordArr.join(`${randomSymbol()}`)}`;
+  return password;
+};
+
+const passPhraseStartsUpperCase = (wordCount, digitCount) => {
+  const wordArr = [];
+  let password = '';
+  for (let i = 0; i < wordCount; i++) {
+    let randomWord = randomWordPicker(4, 8);
+    if (i % 2 === 0) {
+      wordArr.push(randomWord.toUpperCase());
+    } else {
+      wordArr.push(randomWord);
+    }
+  }
+
+  wordArr.push(randomizeNumber(digitCount));
+  password = `${wordArr.join(`${randomSymbol()}`)}`;
+  return password;
 };
 
 const listBuilder = (wordCount, digitCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    list.push(passPhraseBuilder(wordCount, digitCount));
+    if (Math.random() < 0.5) {
+      list.push(`<dt>${passPhraseStartsLowerCase(wordCount, digitCount)}</dt>`);
+    } else {
+      list.push(`<dt>${passPhraseStartsUpperCase(wordCount, digitCount)}</dt>`);
+    }
   }
   return list.join('');
 };

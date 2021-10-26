@@ -3039,48 +3039,40 @@ const randomSymbol = () => {
   return symbols[randNum];
 };
 
-const passPhraseStartsLowerCase = (wordCount, digitCount) => {
+const passPhrase = (wordCount, digitPaddingCount) => {
   const wordArr = [];
   let password = '';
-  for (let i = 0; i < wordCount; i++) {
-    let randomWord = randomWordPicker(4, 6);
-    if (!i % 2 === 0) {
-      wordArr.push(randomWord.toUpperCase());
-    } else {
-      wordArr.push(randomWord);
+
+  if (Math.random() < 0.5) {
+    for (let i = 0; i < wordCount; i++) {
+      let randomWord = randomWordPicker(4, 6);
+      if (!i % 2 === 0) {
+        wordArr.push(randomWord.toUpperCase());
+      } else {
+        wordArr.push(randomWord);
+      }
+    }
+  } else {
+    for (let i = 0; i < wordCount; i++) {
+      let randomWord = randomWordPicker(4, 6);
+      if (i % 2 === 0) {
+        wordArr.push(randomWord.toUpperCase());
+      } else {
+        wordArr.push(randomWord);
+      }
     }
   }
 
-  wordArr.push(randomizeNumber(digitCount));
+  wordArr.unshift(randomizeNumber(digitPaddingCount));
+  wordArr.push(randomizeNumber(digitPaddingCount));
   password = `${wordArr.join(`${randomSymbol()}`)}`;
   return password;
 };
 
-const passPhraseStartsUpperCase = (wordCount, digitCount) => {
-  const wordArr = [];
-  let password = '';
-  for (let i = 0; i < wordCount; i++) {
-    let randomWord = randomWordPicker(4, 8);
-    if (i % 2 === 0) {
-      wordArr.push(randomWord.toUpperCase());
-    } else {
-      wordArr.push(randomWord);
-    }
-  }
-
-  wordArr.push(randomizeNumber(digitCount));
-  password = `${wordArr.join(`${randomSymbol()}`)}`;
-  return password;
-};
-
-const listBuilder = (wordCount, digitCount, listItemCount) => {
+const listBuilder = (wordCount, digitPaddingCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    if (Math.random() < 0.5) {
-      list.push(`<dt>${passPhraseStartsLowerCase(wordCount, digitCount)}</dt>`);
-    } else {
-      list.push(`<dt>${passPhraseStartsUpperCase(wordCount, digitCount)}</dt>`);
-    }
+    list.push(`<dt>${passPhrase(wordCount, digitPaddingCount)}</dt>`);
   }
   return list.join('');
 };
@@ -3090,7 +3082,7 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      ${listBuilder(3, 4, 10)}
+      ${listBuilder(3, 2, 10)}
       </dl>
     </div>`
   );

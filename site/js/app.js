@@ -21,13 +21,6 @@ function listPicker(array) {
   return array[listItem];
 }
 
-const randomCaps = (word) => {
-  const num = getRandomDigit(0, 1);
-  if (num === 0) {
-    return word;
-  } else return word.toUpperCase();
-};
-
 //pick a valid random word from the array
 function randomWordPicker(minWordLength, maxWordLength) {
   const words = [
@@ -3037,8 +3030,7 @@ function randomWordPicker(minWordLength, maxWordLength) {
   while (word.length < minWordLength || word.length > maxWordLength) {
     word = listPicker(words);
   }
-
-  return randomCaps(word);
+  return word;
 }
 
 const randomSymbol = () => {
@@ -3050,10 +3042,15 @@ const randomSymbol = () => {
 const passPhraseBuilder = (wordCount, digitCount) => {
   const wordArr = [];
   let password = '';
-  while (wordArr.length < wordCount) {
-    wordArr.push(randomWordPicker(4, 6));
-    //put something here for... if (wordArr.push(randomWordPicker(4, 6)) === all caps) {make the next word all lower case} and vice versa
+  for (let i = 0; i < wordCount; i++) {
+    let randomWord = randomWordPicker(4, 6);
+    if (!i % 2 === 0) {
+      wordArr.push(randomWord.toUpperCase());
+    } else {
+      wordArr.push(randomWord);
+    }
   }
+
   wordArr.push(randomizeNumber(digitCount));
   password = `${wordArr.join(`${randomSymbol()}`)}`;
   return password;

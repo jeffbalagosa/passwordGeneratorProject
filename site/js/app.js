@@ -3039,32 +3039,27 @@ const randomSymbol = () => {
   return symbols[randNum];
 };
 
-const passPhraseStartsLowerCase = (wordCount, digitCount) => {
+const passPhrase = (wordCount, digitCount) => {
   const wordArr = [];
   let password = '';
-  for (let i = 0; i < wordCount; i++) {
-    let randomWord = randomWordPicker(4, 6);
-    if (!i % 2 === 0) {
-      wordArr.push(randomWord.toUpperCase());
-    } else {
-      wordArr.push(randomWord);
+
+  if (Math.random() < 0.5) {
+    for (let i = 0; i < wordCount; i++) {
+      let randomWord = randomWordPicker(4, 6);
+      if (!i % 2 === 0) {
+        wordArr.push(randomWord.toUpperCase());
+      } else {
+        wordArr.push(randomWord);
+      }
     }
-  }
-
-  wordArr.push(randomizeNumber(digitCount));
-  password = `${wordArr.join(`${randomSymbol()}`)}`;
-  return password;
-};
-
-const passPhraseStartsUpperCase = (wordCount, digitCount) => {
-  const wordArr = [];
-  let password = '';
-  for (let i = 0; i < wordCount; i++) {
-    let randomWord = randomWordPicker(4, 6);
-    if (i % 2 === 0) {
-      wordArr.push(randomWord.toUpperCase());
-    } else {
-      wordArr.push(randomWord);
+  } else {
+    for (let i = 0; i < wordCount; i++) {
+      let randomWord = randomWordPicker(4, 6);
+      if (i % 2 === 0) {
+        wordArr.push(randomWord.toUpperCase());
+      } else {
+        wordArr.push(randomWord);
+      }
     }
   }
 
@@ -3076,11 +3071,7 @@ const passPhraseStartsUpperCase = (wordCount, digitCount) => {
 const listBuilder = (wordCount, digitCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    if (Math.random() < 0.5) {
-      list.push(`<dt>${passPhraseStartsLowerCase(wordCount, digitCount)}</dt>`);
-    } else {
-      list.push(`<dt>${passPhraseStartsUpperCase(wordCount, digitCount)}</dt>`);
-    }
+    list.push(`<dt>${passPhrase(wordCount, digitCount)}</dt>`);
   }
   return list.join('');
 };

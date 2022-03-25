@@ -3039,6 +3039,7 @@ const randomSymbol = () => {
   return symbols[randNum];
 };
 
+<<<<<<< HEAD
 const passPhrase = (wordCount, digitCount) => {
   const wordArr = [];
   let password = '';
@@ -3047,6 +3048,17 @@ const passPhrase = (wordCount, digitCount) => {
     for (let i = 0; i < wordCount; i++) {
       let randomWord = randomWordPicker(4, 6);
       if (!i % 2 === 0) {
+=======
+const passPhrase = (wordCount, digitPaddingCount) => {
+  const wordArr = [];
+  let password = '';
+
+  // randomize 1st word in array to be all caps or all lowercase, then alternate case for next word.  For example, If first word in array is "PLAY," then the next word would be "ball."  If first word in array is "play," then the next word would be, "BALL."
+  if (Math.random() < 0.5) {
+    for (let i = 0; i < wordCount; i++) {
+      let randomWord = randomWordPicker(4, 6);
+      if (i % 2 !== 0) {
+>>>>>>> personalPWGenerator
         wordArr.push(randomWord.toUpperCase());
       } else {
         wordArr.push(randomWord);
@@ -3063,15 +3075,27 @@ const passPhrase = (wordCount, digitCount) => {
     }
   }
 
+<<<<<<< HEAD
   wordArr.push(randomizeNumber(digitCount));
+=======
+  wordArr.unshift(randomizeNumber(digitPaddingCount));
+  wordArr.push(randomizeNumber(digitPaddingCount));
+>>>>>>> personalPWGenerator
   password = `${wordArr.join(`${randomSymbol()}`)}`;
   return password;
 };
 
+<<<<<<< HEAD
 const listBuilder = (wordCount, digitCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
     list.push(`<dt>${passPhrase(wordCount, digitCount)}</dt>`);
+=======
+const listBuilder = (wordCount, digitPaddingCount, listItemCount) => {
+  const list = [];
+  while (list.length < listItemCount) {
+    list.push(`<dt>${passPhrase(wordCount, digitPaddingCount)}</dt>`);
+>>>>>>> personalPWGenerator
   }
   return list.join('');
 };
@@ -3081,7 +3105,11 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
+<<<<<<< HEAD
       ${listBuilder(2, 2, 10)}
+=======
+      ${listBuilder(3, 2, 10)}
+>>>>>>> personalPWGenerator
       </dl>
     </div>`
   );

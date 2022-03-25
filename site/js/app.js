@@ -3047,7 +3047,7 @@ const passPhrase = (wordCount, digitPaddingCount) => {
   if (Math.random() < 0.5) {
     for (let i = 0; i < wordCount; i++) {
       let randomWord = randomWordPicker(4, 6);
-      if (!i % 2 === 0) {
+      if (i % 2 !== 0) {
         wordArr.push(randomWord.toUpperCase());
       } else {
         wordArr.push(randomWord);

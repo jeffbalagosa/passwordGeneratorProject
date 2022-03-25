@@ -3070,6 +3070,7 @@ const passPhrase = (wordCount, digitPaddingCount) => {
   return password;
 };
 
+//builds array to later turn into passphrase
 const listBuilder = (wordCount, digitPaddingCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {

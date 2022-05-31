@@ -15,12 +15,6 @@ function randomizeNumber(digits) {
   return numArr.join('');
 }
 
-// pick random element from an array
-function listPicker(array) {
-  const listItem = Math.floor(Math.random() * Math.floor(array.length));
-  return array[listItem];
-}
-
 //pick a valid random word from the array
 function randomWordPicker(minWordLength, maxWordLength) {
   const words = [
@@ -3022,10 +3016,10 @@ function randomWordPicker(minWordLength, maxWordLength) {
     'youth',
     'zone',
   ];
-  let word = listPicker(words);
+  let word = chance.pickone(words);
   //validate word to meet required length
   while (word.length < minWordLength || word.length > maxWordLength) {
-    word = listPicker(words);
+    word = chance.pickone(words);
   }
   return word;
 }

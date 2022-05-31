@@ -3019,9 +3019,8 @@ function randomWordPicker(minWordLength, maxWordLength) {
 }
 
 const randomSymbol = () => {
-  let symbols = ['.', '!', '?', '%', '$', '@', '^', ':', '-', '_', ';'];
-  let randNum = Math.floor(Math.random() * (symbols.length - 0)) + 0;
-  return symbols[randNum];
+  const symbols = ['.', '!', '?', '%', '$', '@', '^', ':', '-', '_', ';'];
+  return chance.pickone(symbols);
 };
 
 const passPhrase = (wordCount, digitPaddingCount) => {

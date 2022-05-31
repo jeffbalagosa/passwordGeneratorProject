@@ -3023,7 +3023,7 @@ const randomSymbol = () => {
   return chance.pickone(symbols);
 };
 
-const passPhrase = (wordCount, digitPaddingCount) => {
+const passPhrase = (wordCount) => {
   const wordArr = [];
   let password = '';
   let randomWord = '';
@@ -3049,17 +3049,17 @@ const passPhrase = (wordCount, digitPaddingCount) => {
     }
   }
 
-  wordArr.unshift(randomizeNumber(digitPaddingCount));
-  wordArr.push(randomizeNumber(digitPaddingCount));
+  wordArr.unshift(randomizeNumber(2));
+  wordArr.push(randomizeNumber(2));
   password = `${wordArr.join(`${randomSymbol()}`)}`;
   return password;
 };
 
 //build list item html for dom
-const listBuilder = (wordCount, digitPaddingCount, listItemCount) => {
+const listBuilder = (wordCount, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    list.push(`<dt>${passPhrase(wordCount, digitPaddingCount)}</dt>`);
+    list.push(`<dt>${passPhrase(wordCount)}</dt>`);
   }
   return list.join('');
 };
@@ -3069,7 +3069,7 @@ function buildSuggestionList() {
   $('.pwList').html(
     `<div>
       <dl>
-      ${listBuilder(3, 2, 10)}
+      ${listBuilder(3, 10)}
       </dl>
     </div>`
   );

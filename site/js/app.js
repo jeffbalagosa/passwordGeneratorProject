@@ -1,16 +1,10 @@
 /* eslint-disable no-use-before-define */
-// word array
-
-// generate random number by passing in a high and a low number
-function getRandomDigit(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 //randomize number for every list item
 function randomizeNumber(digits) {
   let numArr = [];
   while (numArr.length < digits) {
-    numArr.push(getRandomDigit(0, 9));
+    numArr.push(chance.integer({ min: -0, max: 9 }));
   }
   return numArr.join('');
 }

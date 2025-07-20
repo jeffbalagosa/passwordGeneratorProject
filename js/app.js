@@ -26,9 +26,7 @@ async function randomWordPicker(minWordLength, maxWordLength) {
       }
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
-      // Handle the error appropriately in a real app
-      // For now, we can just return a default word or re-throw
-      return "error"; // Or some other fallback
+      return "error";
     }
   }
   return suitableWord;

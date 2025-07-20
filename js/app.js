@@ -92,7 +92,7 @@ async function buildSuggestionList() {
   const minWordLength = $('#minWordLength').val();
   const maxWordLength = $('#maxWordLength').val();
   // Show a loading spinner with accessibility
-  $('.pwList').attr('aria-busy', 'true').html('<div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div>');
+  $('.pwList').attr('aria-busy', 'true').html('<div><div class="loading-text">Loading...</div><div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div></div>');
   try {
     const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10);
     $('.pwList').html(

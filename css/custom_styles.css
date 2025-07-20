@@ -1,3 +1,12 @@
+/* Loading text styles */
+.pwList .loading-text {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 body {
   background-color: #ebeced;
 }

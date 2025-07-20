@@ -20,7 +20,6 @@ async function randomWordPicker(minWordLength, maxWordLength) {
       }
       const words = await response.json();
       const suitableWords = words.filter(word => word.length >= minWordLength && word.length <= maxWordLength);
-
       if (suitableWords.length > 0) {
         suitableWord = chance.pickone(suitableWords);
       }
@@ -92,8 +91,8 @@ async function buildSuggestionList() {
   const numDigits = $('#numDigits').val();
   const minWordLength = $('#minWordLength').val();
   const maxWordLength = $('#maxWordLength').val();
-  // Show a loading message
-  $('.pwList').html('<p>Generating passwords...</p>');
+  // Show a loading spinner with accessibility
+  $('.pwList').attr('aria-busy', 'true').html('<div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div>');
   try {
     const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10);
     $('.pwList').html(

@@ -33,6 +33,16 @@
           <p>(JavaScript generated passwords will go here...)</p>
           <hr />
         </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="numWords" class="form-label">Number of Words</label>
+            <input type="number" class="form-control" id="numWords" value="4" min="1" max="10">
+          </div>
+          <div class="col">
+            <label for="numDigits" class="form-label">Number of Digits</label>
+            <input type="number" class="form-control" id="numDigits" value="4" min="1" max="10">
+          </div>
+        </div>
         <button type="button" class="btn btn-warning get-pass">
           Get Passwords!
         </button>

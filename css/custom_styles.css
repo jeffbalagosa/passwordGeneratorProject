@@ -1,3 +1,9 @@
+/* Loading background matches list */
+.pwList-loading-bg {
+  background-color: #f1efef;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 /* Loading text styles */
 .pwList .loading-text {
   display: block;

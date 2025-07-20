@@ -3023,7 +3023,7 @@ const randomSymbol = () => {
   return chance.pickone(symbols);
 };
 
-const passPhrase = (wordCount, numDigits) => {
+const passPhrase = (wordCount, numDigits, minWordLength, maxWordLength) => {
   const wordArr = [];
   let password = '';
   let randomWord = '';
@@ -3031,7 +3031,7 @@ const passPhrase = (wordCount, numDigits) => {
   // randomize 1st word in array to be all caps or all lowercase, then alternate case for next word.  For example, If first word in array is "PLAY," then the next word would be "ball."  If first word in array is "play," then the next word would be, "BALL."
   if (Math.random() < 0.5) {
     for (let i = 0; i < wordCount; i++) {
-      randomWord = randomWordPicker(4, 6);
+      randomWord = randomWordPicker(minWordLength, maxWordLength);
       if (i % 2 !== 0) {
         wordArr.push(randomWord.toUpperCase());
       } else {
@@ -3040,7 +3040,7 @@ const passPhrase = (wordCount, numDigits) => {
     }
   } else {
     for (let i = 0; i < wordCount; i++) {
-      randomWord = randomWordPicker(4, 6);
+      randomWord = randomWordPicker(minWordLength, maxWordLength);
       if (i % 2 === 0) {
         wordArr.push(randomWord.toUpperCase());
       } else {
@@ -3056,10 +3056,10 @@ const passPhrase = (wordCount, numDigits) => {
 };
 
 //build list item html for dom
-const listBuilder = (wordCount, numDigits, listItemCount) => {
+const listBuilder = (wordCount, numDigits, minWordLength, maxWordLength, listItemCount) => {
   const list = [];
   while (list.length < listItemCount) {
-    list.push(`<dt>${passPhrase(wordCount, numDigits)}</dt>`);
+    list.push(`<dt>${passPhrase(wordCount, numDigits, minWordLength, maxWordLength)}</dt>`);
   }
   return list.join('');
 };
@@ -3068,10 +3068,12 @@ const listBuilder = (wordCount, numDigits, listItemCount) => {
 function buildSuggestionList() {
   const numWords = $('#numWords').val();
   const numDigits = $('#numDigits').val();
+  const minWordLength = $('#minWordLength').val();
+  const maxWordLength = $('#maxWordLength').val();
   $('.pwList').html(
     `<div>
       <dl>
-      ${listBuilder(numWords, numDigits, 10)}
+      ${listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10)}
       </dl>
     </div>`
   );

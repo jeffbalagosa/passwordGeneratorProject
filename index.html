@@ -60,6 +60,18 @@
             <input type="number" class="form-control" id="pwCount" value="1" min="1" max="50" aria-describedby="pwCountHelp">
             <div id="pwCountHelp" class="form-text">How many passwords to generate (default 1).</div>
           </div>
+          <div class="option-group">
+            <span class="form-label d-block">Word Source</span>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="wordSource" id="wordSourceApi" value="api" checked>
+              <label class="form-check-label" for="wordSourceApi">API</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="wordSource" id="wordSourceChance" value="chance">
+              <label class="form-check-label" for="wordSourceChance">Chance (Offline)</label>
+            </div>
+            <div class="form-text">API is default; switch to Chance for offline generation.</div>
+          </div>
         </div>
         <button type="button" class="btn btn-warning get-pass">
           Get Passwords!

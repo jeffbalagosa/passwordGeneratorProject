@@ -9,26 +9,41 @@ function randomizeNumber(digits) {
   return numArr.join('');
 }
 
-//pick a valid random word from the array
-async function randomWordPicker(minWordLength, maxWordLength) {
-  let suitableWord = null;
-  while (suitableWord === null) {
-    try {
-      const response = await fetch('https://random-word-api.herokuapp.com/word?number=50');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const words = await response.json();
-      const suitableWords = words.filter(word => word.length >= minWordLength && word.length <= maxWordLength);
-      if (suitableWords.length > 0) {
-        suitableWord = chance.pickone(suitableWords);
-      }
-    } catch (error) {
-      console.error('There has been a problem with your fetch operation:', error);
-      return "error";
-    }
+// Toggle state: 'api' (default) or 'chance'. Updated via radio buttons.
+let WORD_SOURCE_MODE = 'api';
+
+// API-based word picker (returns a single word) with fallback to Chance if network fails.
+async function apiRandomWordPicker(minWordLength, maxWordLength) {
+  minWordLength = Number(minWordLength); maxWordLength = Number(maxWordLength);
+  try {
+    const response = await fetch('https://random-word-api.herokuapp.com/word?number=50');
+    if (!response.ok) throw new Error('Network response not ok');
+    const words = await response.json();
+    const suitable = words.filter(w => w.length >= minWordLength && w.length <= maxWordLength);
+    if (suitable.length) return chance.pickone(suitable);
+  } catch (e) {
+    console.warn('API word fetch failed, falling back to Chance:', e.message);
   }
-  return suitableWord;
+  return chanceRandomWordPicker(minWordLength, maxWordLength);
+}
+
+// Local Chance-based picker.
+function chanceRandomWordPicker(minWordLength, maxWordLength) {
+  minWordLength = Number(minWordLength); maxWordLength = Number(maxWordLength);
+  for (let i = 0; i < 40; i++) {
+    const targetLen = chance.integer({ min: minWordLength, max: maxWordLength });
+    const w = chance.word({ length: targetLen });
+    if (w && w.length >= minWordLength && w.length <= maxWordLength) return w;
+  }
+  return chance.word({ length: maxWordLength });
+}
+
+// Unified wrapper used by the rest of the code; always returns a Promise.
+function randomWordPicker(minWordLength, maxWordLength) {
+  if (WORD_SOURCE_MODE === 'chance') {
+    return Promise.resolve(chanceRandomWordPicker(minWordLength, maxWordLength));
+  }
+  return apiRandomWordPicker(minWordLength, maxWordLength);
 }
 
 const randomSymbol = () => {
@@ -40,8 +55,7 @@ const passPhrase = async (wordCount, numDigits, minWordLength, maxWordLength, se
   const wordArr = [];
   let password = '';
 
-  // Since randomWordPicker is now async, we need to await it.
-  // We can generate all the words in parallel.
+  // randomWordPicker may be async (API) or effectively sync (Chance); Promise.all handles both.
   const wordPromises = [];
   for (let i = 0; i < wordCount; i++) {
     wordPromises.push(randomWordPicker(minWordLength, maxWordLength));
@@ -126,6 +140,12 @@ buildSuggestionList();
 //get passwords on button click
 $('.get-pass').on('click', function () {
   //place jquery function for dom manipulation here.
+  buildSuggestionList();
+});
+
+// Listen for word source toggle changes
+$(document).on('change', 'input[name="wordSource"]', function () {
+  WORD_SOURCE_MODE = this.value; // 'api' or 'chance'
   buildSuggestionList();
 });
 

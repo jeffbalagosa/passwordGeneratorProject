@@ -94,10 +94,15 @@ async function buildSuggestionList() {
   const minWordLength = $('#minWordLength').val();
   const maxWordLength = $('#maxWordLength').val();
   const separator = $('#separator').val();
+  const pwCountRaw = $('#pwCount').val();
+  // sanitize and fallback
+  let pwCount = parseInt(pwCountRaw, 10);
+  if (isNaN(pwCount) || pwCount < 1) pwCount = 1;
+  if (pwCount > 50) pwCount = 50;
   // Show a loading spinner with accessibility
   $('.pwList').attr('aria-busy', 'true').html('<div class="pwList-loading-bg"><div class="loading-text">Loading...</div><div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div></div>');
   try {
-    const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10, separator);
+    const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, pwCount, separator);
     $('.pwList').html(
       `<div>
         <dl>

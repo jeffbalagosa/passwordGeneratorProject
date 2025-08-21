@@ -60,6 +60,13 @@
             <div id="separatorHelp" class="form-text">Character(s) placed between parts. Default is underscore.</div>
           </div>
         </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="pwCount" class="form-label">Number of Passwords</label>
+            <input type="number" class="form-control" id="pwCount" value="1" min="1" max="50" aria-describedby="pwCountHelp">
+            <div id="pwCountHelp" class="form-text">How many passwords to generate at once (default 1).</div>
+          </div>
+        </div>
         <button type="button" class="btn btn-warning get-pass">
           Get Passwords!
         </button>

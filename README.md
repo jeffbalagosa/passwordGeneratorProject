@@ -16,8 +16,9 @@ The Password Suggestion Tool is a web-based application that generates secure, e
    - Enter the desired number of words in the password.
    - Specify the number of digits to include at the start and end.
    - Define the minimum and maximum word lengths.
-3. **Generate Passwords**: Click the "Get Passwords!" button to generate a list of 10 unique passwords.
-4. **View Results**: Passwords will be displayed in a list below the input fields, with a loading message shown during generation.
+3. **Set Number of Passwords**: Choose how many passwords to generate (default is 1; up to 50 at a time).
+4. **Generate Passwords**: Click the "Get Passwords!" button to generate that many unique passwords.
+5. **View Results**: Passwords will be displayed in a list below the input fields, with a loading message shown during generation.
 
 ## Technologies
 - **HTML**: Structure of the web page.

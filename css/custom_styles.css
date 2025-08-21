@@ -12,8 +12,11 @@
   margin-top: 10px;
   margin-bottom: 5px;
 }
+/* Dark mode base styles */
 body {
-  background-color: #ebeced;
+  background-color: #121212;
+  color: #e0e0e0;
+  -webkit-font-smoothing: antialiased;
 }
 footer {
   margin-top: 1rem;
@@ -28,19 +31,85 @@ footer p {
   margin: auto;
   margin-top: 3rem;
   max-width: 600px;
+  background-color: #1e1e24;
+  color: #e0e0e0;
+  border: 1px solid #2c2c34;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 .card-text em {
-  background-color: yellow;
+  background-color: #ffb300;
+  color: #101010;
+  padding: 0 .25rem;
+  border-radius: 2px;
 }
 dl {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   list-style-type: none;
-  background-color: #f1efef;
+  background-color: #1e1e24;
+  color: #fafafa;
   padding-top: 20px;
   padding-bottom: 20px;
+  border: 1px solid #2c2c34;
+  border-radius: 6px;
 }
+
+/* Adjust loading background for dark mode */
+.pwList-loading-bg,
+.pwList { /* ensure list area matches dark surfaces */
+  background-color: #1a1a1f;
+  color: #e0e0e0;
+  border-radius: 6px;
+}
+
+hr {
+  border-top: 1px solid #2e2e35;
+}
+
+/* Form controls */
+.form-label {
+  color: #cfcfcf;
+}
+
+.form-control {
+  background-color: #2a2a31;
+  color: #e0e0e0;
+  border: 1px solid #3a3a44;
+}
+.form-control:focus {
+  background-color: #32323a;
+  color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 .15rem rgba(99,102,241,.35);
+}
+
+/* Button override (keep Bootstrap sizing but tweak colors for dark) */
+.btn-warning.get-pass {
+  background-color: #ffb300;
+  border-color: #ffb300;
+  color: #101010;
+  font-weight: 600;
+}
+.btn-warning.get-pass:hover,
+.btn-warning.get-pass:focus {
+  background-color: #ffc533;
+  border-color: #ffc533;
+  color: #101010;
+}
+
+/* Footer */
+footer p {
+  color: #888;
+}
+footer p a { color: #b0b0b0; }
+footer p a:hover { color: #ffffff; }
+
+/* Scrollbar (WebKit) for aesthetic dark mode improvement */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #16161a; }
+::-webkit-scrollbar-thumb { background: #303036; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #3d3d45; }
 
 /* Spinner styles */
 .spinner {
@@ -48,11 +117,12 @@ dl {
   justify-content: center;
   width: 60px;
   height: 60px;
-  border: 8px solid #333;
-  border-top: 8px solid #007bff;
+  border: 8px solid #2e2e35;
+  border-top: 8px solid #6366f1;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 20px auto;
+  box-shadow: 0 0 0 1px #1e1e24, 0 0 12px rgba(99,102,241,0.35);
 }
 
 @keyframes spin {

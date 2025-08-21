@@ -129,3 +129,16 @@ footer p a:hover { color: #ffffff; }
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Responsive grid for option inputs */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem 1.25rem;
+  align-items: flex-end;
+}
+.option-group .form-text { font-size: 0.65rem; }
+
+@media (min-width: 900px) {
+  .options-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}

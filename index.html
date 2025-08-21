@@ -33,38 +33,32 @@
           <p>(JavaScript generated passwords will go here...)</p>
           <hr />
         </div>
-        <div class="row mb-3">
-          <div class="col">
+        <div class="options-grid mb-3">
+          <div class="option-group">
             <label for="numWords" class="form-label">Number of Words</label>
             <input type="number" class="form-control" id="numWords" value="2" min="1" max="10">
           </div>
-          <div class="col">
+          <div class="option-group">
             <label for="numDigits" class="form-label">Number of Digits</label>
             <input type="number" class="form-control" id="numDigits" value="2" min="1" max="10">
           </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
+          <div class="option-group">
             <label for="minWordLength" class="form-label">Min Word Length</label>
             <input type="number" class="form-control" id="minWordLength" value="4" min="3" max="10">
           </div>
-          <div class="col">
+            <div class="option-group">
             <label for="maxWordLength" class="form-label">Max Word Length</label>
             <input type="number" class="form-control" id="maxWordLength" value="6" min="3" max="10">
           </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
+          <div class="option-group">
             <label for="separator" class="form-label">Separator</label>
             <input type="text" class="form-control" id="separator" value="_" maxlength="3" aria-describedby="separatorHelp">
             <div id="separatorHelp" class="form-text">Character(s) placed between parts. Default is underscore.</div>
           </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
+          <div class="option-group">
             <label for="pwCount" class="form-label">Number of Passwords</label>
             <input type="number" class="form-control" id="pwCount" value="1" min="1" max="50" aria-describedby="pwCountHelp">
-            <div id="pwCountHelp" class="form-text">How many passwords to generate at once (default 1).</div>
+            <div id="pwCountHelp" class="form-text">How many passwords to generate (default 1).</div>
           </div>
         </div>
         <button type="button" class="btn btn-warning get-pass">

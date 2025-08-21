@@ -103,10 +103,15 @@ async function buildSuggestionList() {
   $('.pwList').attr('aria-busy', 'true').html('<div class="pwList-loading-bg"><div class="loading-text">Loading...</div><div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div></div>');
   try {
     const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, pwCount, separator);
-    $('.pwList').html(
-      `<div>
+    $('.pwList').attr('aria-busy', 'false').html(
+      `<div class="pwList-inner">
+        <button type="button" class="copy-all-btn" title="Copy all passwords" aria-label="Copy all passwords">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+          </svg>
+        </button>
         <dl>
-        ${listHtml}
+          ${listHtml}
         </dl>
       </div>`
     );
@@ -123,3 +128,40 @@ $('.get-pass').on('click', function () {
   //place jquery function for dom manipulation here.
   buildSuggestionList();
 });
+
+// Delegate click for dynamically added copy button
+$('.pwList').on('click', '.copy-all-btn', function () {
+  const $btn = $(this);
+  const pwTexts = $('.pwList dt').map(function () { return $(this).text().trim(); }).get();
+  if (!pwTexts.length) return;
+  const all = pwTexts.join('\n');
+  const doFeedback = () => {
+    $btn.addClass('copied');
+    // replace icon path with a checkmark for a moment
+    const originalHtml = $btn.html();
+    $btn.html('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+    setTimeout(() => { $btn.removeClass('copied').html(originalHtml); }, 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(all).then(doFeedback).catch(() => fallbackCopy(all, doFeedback));
+  } else {
+    fallbackCopy(all, doFeedback);
+  }
+});
+
+function fallbackCopy(text, cb) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (typeof cb === 'function') cb();
+  } catch (e) {
+    console.error('Copy failed', e);
+  }
+}

@@ -142,3 +142,27 @@ footer p a:hover { color: #ffffff; }
 @media (min-width: 900px) {
   .options-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 }
+
+/* Copy-all button styles */
+.pwList { position: relative; }
+.pwList-inner { position: relative; }
+.copy-all-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #24242b;
+  border: 1px solid #34343c;
+  color: #d0d0d0;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,.4);
+}
+.copy-all-btn svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+.copy-all-btn:hover, .copy-all-btn:focus { background:#2e2e36; border-color:#444450; color:#fff; outline:none; }
+.copy-all-btn:active { background:#3a3a44; }
+.copy-all-btn.copied { background:#1c4724; border-color:#1c4724; color:#8dffb2; box-shadow:0 0 0 1px #1e1e24, 0 0 6px rgba(80,200,120,.5); }

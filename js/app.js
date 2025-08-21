@@ -36,7 +36,7 @@ const randomSymbol = () => {
   return chance.pickone(symbols);
 };
 
-const passPhrase = async (wordCount, numDigits, minWordLength, maxWordLength) => {
+const passPhrase = async (wordCount, numDigits, minWordLength, maxWordLength, separator) => {
   const wordArr = [];
   let password = '';
 
@@ -70,15 +70,17 @@ const passPhrase = async (wordCount, numDigits, minWordLength, maxWordLength) =>
 
   wordArr.unshift(randomizeNumber(numDigits));
   wordArr.push(randomizeNumber(numDigits));
-  password = `${wordArr.join(`${randomSymbol()}`)}`;
+  // If user provided a separator use it, otherwise random symbol.
+  const sep = (separator && separator.trim() !== '') ? separator : randomSymbol();
+  password = `${wordArr.join(sep)}`;
   return password;
 };
 
 //build list item html for dom
-const listBuilder = async (wordCount, numDigits, minWordLength, maxWordLength, listItemCount) => {
+const listBuilder = async (wordCount, numDigits, minWordLength, maxWordLength, listItemCount, separator) => {
   const passwordPromises = [];
   for (let i = 0; i < listItemCount; i++) {
-    passwordPromises.push(passPhrase(wordCount, numDigits, minWordLength, maxWordLength));
+  passwordPromises.push(passPhrase(wordCount, numDigits, minWordLength, maxWordLength, separator));
   }
   const passwords = await Promise.all(passwordPromises);
   const list = passwords.map(p => `<dt>${p}</dt>`);
@@ -91,10 +93,11 @@ async function buildSuggestionList() {
   const numDigits = $('#numDigits').val();
   const minWordLength = $('#minWordLength').val();
   const maxWordLength = $('#maxWordLength').val();
+  const separator = $('#separator').val();
   // Show a loading spinner with accessibility
   $('.pwList').attr('aria-busy', 'true').html('<div class="pwList-loading-bg"><div class="loading-text">Loading...</div><div class="spinner" role="status"><span class="visually-hidden">Loading...</span></div></div>');
   try {
-    const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10);
+    const listHtml = await listBuilder(numWords, numDigits, minWordLength, maxWordLength, 10, separator);
     $('.pwList').html(
       `<div>
         <dl>
